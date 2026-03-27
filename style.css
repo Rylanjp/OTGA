@@ -1,264 +1,206 @@
-/*root*/
-
+/* ===== Root Variables ===== */
 :root{
-    --page-background-color: #000000bb; /*background grey*/
-    --navbar-color: black; /*navbar background*/
-    --neon-accent-color: rgb(0, 255, 0); /*neon green*/
+    --page-background-color: #000000bb; /* background grey */
+    --navbar-color: black; /* navbar background */
+    --neon-accent-color: rgb(0, 255, 0); /* neon green */
 }
 
-/*body*/
-
+/* ===== Body ===== */
 body {
-   background-color: #000000bb;
+    background-color: var(--page-background-color);
+    margin: 0;
+    font-family: sans-serif;
 }
 
-
-/* NAVBAR */
-
+/* ===== Navbar ===== */
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  position: relative;
-  overflow: visible;
-  padding: 15px 10px;
-  background-color: rgba(0, 0, 0, 0.735);
-  color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    background-color: rgba(0, 0, 0, 0.735);
+    color: white;
 }
 
-/* Logo */
 .logo {
-  height: 60px;          /* adjust to desired size */
-  width: auto;           /* maintain aspect ratio */
-  display: block;        /* prevents extra inline spacing */
+    height: 60px;
+    width: auto;
+    display: block;
 }
 
-/* Links */
 .nav-links {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  list-style: none;
-  font-size: 20px;
-  z-index: 1;
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    font-size: 20px;
 }
 
 .nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
 }
 
 .nav-links a:hover {
-  text-decoration: underline;
-  color: var(--neon-accent-color);
-  text-shadow: 0 0 15px var(--neon-accent-color), 0 0 30px var(--neon-accent-color);
-  display: inline-block;
-  animation: pulse 1.5s infinite;
+    text-decoration: underline;
+    color: var(--neon-accent-color);
+    text-shadow: 0 0 15px var(--neon-accent-color), 0 0 30px var(--neon-accent-color);
+    animation: pulse 1.5s infinite;
 }
 
-/* Hero Section */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 90vh; /* almost full viewport height */
-  background-image: url(assets/OTGA-hero.png);
-  background-color: black;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+/* ===== About Carousel ===== */
+.about-carousel {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #111;
 }
 
-/* Optional overlay for contrast */
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* semi-transparent black */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  z-index: 1; /* ensures text is above overlay */
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-/* Hero Text */
-.hero-title {
-  font-size: 4rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: white; /* solid color */
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6); /* subtle shadow for readability */
-  -webkit-text-stroke: 1px rgba(0,0,0,0.5); /* optional subtle outline for contrast */
+/* ===== Slide ===== */
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+    padding: 0 5%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
 }
 
-.hero-subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
-  -webkit-text-stroke: 0.5px rgba(0,0,0,0.5);
+.slide.active {
+    opacity: 1;
+    z-index: 1;
 }
 
-/* Hero Button */
-.hero-button {
-  padding: 12px 30px;
-  font-size: 1.2rem;
-  background-color: rgba(0, 255, 0, 0.8); /* subtle neon-ish accent */
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 6px;
-  box-shadow: 0 0 8px rgba(0,255,0,0.6), 0 0 16px rgba(0,255,0,0.4); /* subtle glow for button only */
-  transition: all 0.3s ease;
+/* ===== Image Wrapper ===== */
+.slide-image-wrapper {
+    position: relative;
+    width: 55%;
+    height: 80%;
 }
 
-.hero-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(0,255,0,0.8), 0 0 24px rgba(0,255,0,0.5);
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    display: block;
 }
 
-/* Intro + CTA Section */
-.intro-cta {
+/* ===== Text Side ===== */
+.slide-content {
+    width: 35%;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.slide-content h2 {
+    color: var(--neon-accent-color);
+    margin-bottom: 10px;
+}
+
+/* ===== Carousel Arrows ===== */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s ease;
+}
+
+.carousel-btn:hover {
+    color: var(--neon-accent-color);
+    background: rgba(0,0,0,0.8);
+}
+
+.prev {
+    left: 5px; /* relative to image edge */
+}
+
+.next {
+    right: 5px; /* relative to image edge */
+}
+
+/* ===== TESTIMONIALS ===== */
+
+.testimonials {
   padding: 80px 20px;
-  background-color: #111; /* dark background for contrast */
-  text-align: center;
-  color: white;
-}
-
-.intro-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: var(--neon-accent-color);
-  text-shadow: 0 0 5px rgba(0,255,0,0.5); /* subtle glow */
-}
-
-.intro-container p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.intro-button {
-  padding: 14px 36px;
-  font-size: 1.2rem;
-  background-color: var(--neon-accent-color);
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 6px;
-  box-shadow: 0 0 8px rgba(0,255,0,0.6), 0 0 16px rgba(0,255,0,0.4);
-  transition: all 0.3s ease;
-}
-
-.intro-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(0,255,0,0.8), 0 0 24px rgba(0,255,0,0.5);
-}
-
-/* Maze Section */
-.maze-section {
-  padding: 50px 20px;
   background-color: #111;
   color: white;
   text-align: center;
 }
 
-.maze-section h2 {
+.testimonials h2 {
+  font-size: 2.5rem;
   color: var(--neon-accent-color);
-  text-shadow: 0 0 5px rgba(0,255,0,0.6), 0 0 15px rgba(0,255,0,0.3);
+  text-shadow: 0 0 8px rgba(0,255,0,0.5);
+  margin-bottom: 50px;
 }
 
-#maze-container {
-  display: grid;
-  grid-template-columns: repeat(15, 40px);
-  grid-template-rows: repeat(15, 40px);
-  gap: 2px;
-  justify-content: center;
-  margin: 20px auto;
+/* Individual testimonial slide */
+.testimonial-slide {
+  opacity: 0;               /* start invisible */
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  margin-bottom: 60px;
 }
 
-.maze-cell {
-  width: 40px;
-  height: 40px;
-  background-color: #222;
-  border: 1px solid #444;
-  box-sizing: border-box;
+.testimonial-slide img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0,255,0,0.3);
 }
 
-/* Neon player */
-.player {
-  background-color: var(--neon-accent-color);
-  animation: pulse-neon 1s infinite;
+.testimonial-slide blockquote {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 10px;
+  line-height: 1.5;
+  color: #ddd;
 }
 
-/* Neon goal (exit) */
-.goal {
-  background-color: #3c00ff;
-  box-shadow: 0 0 10px #3849ff, 0 0 20px rgba(30, 0, 255, 0.249);
-}
-
-/* Neon keys */
-.key {
-  background-color: #ff0;
-  box-shadow: 0 0 10px #ff0, 0 0 20px rgba(255,255,0,0.3);
-}
-
-/* Walls */
-.wall {
-  background-color: #555;
-}
-
-/* Reset button */
-#reset-maze {
-  padding: 10px 24px;
+.testimonial-slide cite {
   font-size: 1rem;
-  background-color: var(--neon-accent-color);
-  color: black;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 0 8px var(--neon-accent-color), 0 0 16px rgba(0,255,0,0.4);
-  transition: all 0.3s ease;
+  color: var(--neon-accent-color);
 }
 
-#reset-maze:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px var(--neon-accent-color), 0 0 24px rgba(0,255,0,0.5);
+/* When visible on scroll */
+.testimonial-slide.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Maze trap cells */
-.maze-cell.trap {
-  background-color: #ff0000; /* bright red for visibility */
-  border-radius: 4px;        /* optional: round edges for style */
-  box-shadow: 0 0 10px #ff0000; /* subtle glow to make it pop */
-}
-
-/*animations*/
-
+/* ===== Animations ===== */
 @keyframes pulse {
-  0% {
-    text-shadow: 0 0 5px var(--neon-accent-color), 0 0 10px var(--neon-accent-color);
-  }
-  50% {
-    text-shadow: 0 0 15px var(--neon-accent-color), 0 0 30px var(--neon-accent-color);
-  }
-  100% {
-    text-shadow: 0 0 5px var(--neon-accent-color), 0 0 10px var(--neon-accent-color);
-  }
-  0% { box-shadow: 0 0 5px var(--neon-accent-color), 0 0 15px rgba(0,255,0,0.3); }
-  50% { box-shadow: 0 0 15px var(--neon-accent-color), 0 0 30px rgba(0,255,0,0.5); }
-  100% { box-shadow: 0 0 5px var(--neon-accent-color), 0 0 15px rgba(0,255,0,0.3); }
+    0% {
+        text-shadow: 0 0 5px var(--neon-accent-color), 0 0 10px var(--neon-accent-color);
+    }
+    50% {
+        text-shadow: 0 0 15px var(--neon-accent-color), 0 0 30px var(--neon-accent-color);
+    }
+    100% {
+        text-shadow: 0 0 5px var(--neon-accent-color), 0 0 10px var(--neon-accent-color);
+    }
 }
