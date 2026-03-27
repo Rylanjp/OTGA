@@ -1,206 +1,344 @@
-/* ===== Root Variables ===== */
-:root{
-    --page-background-color: #000000bb; /* background grey */
-    --navbar-color: black; /* navbar background */
-    --neon-accent-color: rgb(0, 255, 0); /* neon green */
+/* ===== ROOT ===== */
+:root {
+  --page-background-color: #000000bb; /* background grey */
+  --navbar-color: black; /* navbar background */
+  --neon-accent-color: rgb(0, 255, 0); /* neon green */
 }
 
-/* ===== Body ===== */
+/* ===== BODY ===== */
 body {
-    background-color: var(--page-background-color);
-    margin: 0;
-    font-family: sans-serif;
+  background-color: var(--page-background-color);
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-/* ===== Navbar ===== */
+/* ===== NAVBAR ===== */
+
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 10px;
-    background-color: rgba(0, 0, 0, 0.735);
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 15px 10px;
+  background-color: rgba(0, 0, 0, 0.735);
+  color: white;
 }
 
 .logo {
-    height: 60px;
-    width: auto;
-    display: block;
+  height: 60px;
+  width: auto;
+  display: block;
 }
 
 .nav-links {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  list-style: none;
+  font-size: 20px;
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-block;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
-    color: var(--neon-accent-color);
-    text-shadow: 0 0 15px var(--neon-accent-color), 0 0 30px var(--neon-accent-color);
-    animation: pulse 1.5s infinite;
+  text-decoration: underline;
+  color: var(--neon-accent-color);
+  text-shadow: 0 0 15px var(--neon-accent-color), 0 0 30px var(--neon-accent-color);
+  animation: pulse 1.5s infinite;
 }
 
-/* ===== About Carousel ===== */
-.about-carousel {
-    width: 100%;
-    height: 80vh;
-    position: relative;
-    overflow: hidden;
-    background-color: #111;
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  background-color: black;
+  background-image: url('assets/OTGA-hero.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.carousel {
-    width: 100%;
-    height: 100%;
-    position: relative;
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
 }
 
-/* ===== Slide ===== */
-.slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 40px;
-    padding: 0 5%;
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 
-.slide.active {
-    opacity: 1;
-    z-index: 1;
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
 }
 
-/* ===== Image Wrapper ===== */
-.slide-image-wrapper {
-    position: relative;
-    width: 55%;
-    height: 80%;
+.hero-button {
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  background-color: rgba(0, 255, 0, 0.8);
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0,255,0,0.6), 0 0 16px rgba(0,255,0,0.4);
+  transition: all 0.3s ease;
 }
 
-.slide-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 10px;
-    display: block;
+.hero-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0,255,0,0.8), 0 0 24px rgba(0,255,0,0.5);
 }
 
-/* ===== Text Side ===== */
-.slide-content {
-    width: 35%;
-    color: white;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 25px;
-    border-radius: 10px;
+/* ===== INTRO + CTA ===== */
+.intro-cta {
+  padding: 80px 20px;
+  background-color: #111;
+  text-align: center;
+  color: white;
 }
 
-.slide-content h2 {
-    color: var(--neon-accent-color);
-    margin-bottom: 10px;
+.intro-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--neon-accent-color);
+  text-shadow: 0 0 5px rgba(0,255,0,0.5);
 }
 
-/* ===== Carousel Arrows ===== */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.6);
-    color: white;
-    border: none;
-    font-size: 30px;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-    transition: 0.3s ease;
+.intro-container p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.carousel-btn:hover {
-    color: var(--neon-accent-color);
-    background: rgba(0,0,0,0.8);
+.intro-button {
+  padding: 14px 36px;
+  font-size: 1.2rem;
+  background-color: var(--neon-accent-color);
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0,255,0,0.6), 0 0 16px rgba(0,255,0,0.4);
+  transition: all 0.3s ease;
 }
 
-.prev {
-    left: 5px; /* relative to image edge */
+.intro-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0,255,0,0.8), 0 0 24px rgba(0,255,0,0.5);
 }
 
-.next {
-    right: 5px; /* relative to image edge */
+/* ===== ABOUT PAGE CAROUSEL ===== */
+body.about-page .about-carousel {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #111;
+}
+
+body.about-page .carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+body.about-page .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+body.about-page .slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* IMAGE SIDE */
+body.about-page .slide-image-wrapper {
+  position: relative;
+  width: 55%;
+  height: 80%;
+}
+
+body.about-page .slide-image-wrapper img.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fully fills space */
+  border-radius: 10px;
+  background-color: black;
+}
+
+/* TEXT SIDE */
+body.about-page .slide-content {
+  width: 35%;
+  color: white;
+  background: rgba(0,0,0,0.6);
+  padding: 25px;
+  border-radius: 10px;
+}
+
+body.about-page .slide-content h2 {
+  color: var(--neon-accent-color);
+  margin-bottom: 10px;
+}
+
+/* ARROWS */
+body.about-page .carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  font-size: 30px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+  transition: 0.3s ease;
+}
+
+body.about-page .carousel-btn:hover {
+  color: var(--neon-accent-color);
+  background: rgba(0,0,0,0.8);
+}
+
+body.about-page .prev {
+  left: 10px;
+}
+
+body.about-page .next {
+  right: 10px;
 }
 
 /* ===== TESTIMONIALS ===== */
-
-.testimonials {
+body.about-page .testimonials {
+  text-align: center;
   padding: 80px 20px;
   background-color: #111;
   color: white;
-  text-align: center;
 }
 
-.testimonials h2 {
+body.about-page .testimonials h2 {
   font-size: 2.5rem;
-  color: var(--neon-accent-color);
-  text-shadow: 0 0 8px rgba(0,255,0,0.5);
   margin-bottom: 50px;
+  color: var(--neon-accent-color);
+  text-shadow: 0 0 5px rgba(0,255,0,0.5);
 }
 
-/* Individual testimonial slide */
-.testimonial-slide {
-  opacity: 0;               /* start invisible */
-  transform: translateY(30px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-  margin-bottom: 60px;
+/* Testimonial slides */
+body.about-page .testimonial-slide {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.testimonial-slide img {
+body.about-page .testimonial-slide.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.about-page .testimonial-slide img {
   width: 400px;
   height: 400px;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 20px;
-  box-shadow: 0 0 15px rgba(0,255,0,0.3);
+  box-shadow: 0 0 20px rgba(0,255,0,0.4);
 }
 
-.testimonial-slide blockquote {
+body.about-page .testimonial-slide blockquote {
   font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto 10px;
-  line-height: 1.5;
-  color: #ddd;
+  margin-bottom: 10px;
 }
 
-.testimonial-slide cite {
+body.about-page .testimonial-slide cite {
   font-size: 1rem;
-  color: var(--neon-accent-color);
+  font-style: normal;
+  color: #aaa;
 }
 
-/* When visible on scroll */
-.testimonial-slide.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===== Animations ===== */
+/* ===== ANIMATIONS ===== */
 @keyframes pulse {
-    0% {
-        text-shadow: 0 0 5px var(--neon-accent-color), 0 0 10px var(--neon-accent-color);
-    }
-    50% {
-        text-shadow: 0 0 15px var(--neon-accent-color), 0 0 30px var(--neon-accent-color);
-    }
-    100% {
-        text-shadow: 0 0 5px var(--neon-accent-color), 0 0 10px var(--neon-accent-color);
-    }
+  0% {
+    text-shadow: 0 0 5px var(--neon-accent-color), 0 0 10px var(--neon-accent-color);
+  }
+  50% {
+    text-shadow: 0 0 15px var(--neon-accent-color), 0 0 30px var(--neon-accent-color);
+  }
+  100% {
+    text-shadow: 0 0 5px var(--neon-accent-color), 0 0 10px var(--neon-accent-color);
+  }
+  0% { box-shadow: 0 0 5px var(--neon-accent-color), 0 0 15px rgba(0,255,0,0.3); }
+  50% { box-shadow: 0 0 15px var(--neon-accent-color), 0 0 30px rgba(0,255,0,0.5); }
+  100% { box-shadow: 0 0 5px var(--neon-accent-color), 0 0 15px rgba(0,255,0,0.3); }
+}
+
+/* ===== MEDIA QUERIES ===== */
+@media (max-width: 1024px) {
+  body.about-page .slide {
+    flex-direction: column;
+  }
+  body.about-page .slide-image-wrapper {
+    width: 80%;
+    height: 50%;
+  }
+  body.about-page .slide-content {
+    width: 90%;
+  }
+  body.about-page .testimonial-slide img {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  body.about-page .slide-image-wrapper {
+    width: 100%;
+    height: 40%;
+  }
+  body.about-page .slide-content {
+    width: 100%;
+  }
+  body.about-page .testimonial-slide img {
+    width: 200px;
+    height: 200px;
+  }
 }
