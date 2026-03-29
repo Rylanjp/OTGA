@@ -37,3 +37,29 @@ const testimonialObserver = new IntersectionObserver((entries, observer) => {
 }, observerOptions);
 
 testimonialSlides.forEach(slide => testimonialObserver.observe(slide));
+
+// neon sign effect
+
+document.addEventListener("DOMContentLoaded", () => {
+  const letters = document.querySelectorAll('.neon-sign span');
+
+  letters.forEach(letter => {
+    function flicker() {
+      const delay = Math.random() * 3000 + 500;
+
+      setTimeout(() => {
+        if (Math.random() > 0.6) {
+          letter.style.opacity = "0";
+
+          setTimeout(() => {
+            letter.style.opacity = "1";
+          }, Math.random() * 200 + 50);
+        }
+
+        flicker(); // loop forever
+      }, delay);
+    }
+
+    flicker();
+  });
+});
